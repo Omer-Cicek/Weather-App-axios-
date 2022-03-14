@@ -11,15 +11,12 @@ submitButton.addEventListener('click', (e) => {
   if (!cityArray.includes(inputBar.value)) {
     getApiWeather(inputBar.value);
   } else {
-    duplicateMessage.innerText =
-      'You already know the weather for Ankara, Please search for another city😉';
+    duplicateMessage.innerText = `You already know the weather for ${inputBar.value} , Please search for another city😉`;
     setTimeout(() => {
       duplicateMessage.innerText = '';
     }, 3000);
   }
   cityArray.push(inputBar.value);
-  console.log(cityArray);
-
   inputBar.value = '';
 });
 
@@ -36,7 +33,6 @@ const getApiWeather = async (city) => {
       sys: { country },
       weather,
     } = weatherApi.data;
-
     const cardCity = document.createElement('div');
     cardCity.classList.add('city');
     cardCity.innerHTML = `
@@ -44,12 +40,16 @@ const getApiWeather = async (city) => {
               name.includes('Province') ? name.split(' ').slice(0, -1) : name
             } <sup>${country}</sup></h2>
             <li class="city-temp">${Math.round(temp)}<sup>℃</sup></li>
-            <img src="./svg/${weather[0].icon}.svg" class="city-icon" alt="" />
+            <img src="./svg/${weather[0].icon.slice(
+              0,
+              2
+            )}d.svg" class="city-icon" alt="" />
             <p>
                 <figcaption>${weather[0].description}</figcaption>
             </p>`;
     cardsDiv.appendChild(cardCity);
   } catch (error) {
-    alert('Please type valid city name');
+    alert('Something went wrong! 🙉');
+    cityArray.pop();
   }
 };
