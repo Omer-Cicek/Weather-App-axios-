@@ -4,8 +4,9 @@ const cardsDiv = document.querySelector('.cities');
 const everyCardItem = document.querySelectorAll('.city');
 const duplicateMessage = document.querySelector('.msg');
 
+//Array that controls if its duplicated or not
 const cityArray = [];
-
+//AddeventListener func
 submitButton.addEventListener('click', (e) => {
   e.preventDefault();
   if (!cityArray.includes(inputBar.value)) {
@@ -23,16 +24,19 @@ submitButton.addEventListener('click', (e) => {
 const getApiWeather = async (city) => {
   const apikey = '0484911c888ace660e39553d21c622d9';
   try {
+    //fetching Data
     const weatherApi = await axios({
       url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`,
       method: 'get',
     });
+    //Destructuring api data
     const {
       name,
       main: { temp },
       sys: { country },
       weather,
     } = weatherApi.data;
+    //Creating and appending last child if valid
     const cardCity = document.createElement('div');
     cardCity.classList.add('city');
     cardCity.innerHTML = `
