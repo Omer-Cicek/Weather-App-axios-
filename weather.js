@@ -26,7 +26,7 @@ const getApiWeather = async (city) => {
   try {
     //fetching Data
     const weatherApi = await axios({
-      url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`,
+      url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric&lang=tr`,
       method: 'get',
     });
     //Destructuring api data
@@ -51,7 +51,7 @@ const getApiWeather = async (city) => {
             <p>
                 <figcaption>${weather[0].description}</figcaption>
             </p>`;
-    cardsDiv.appendChild(cardCity);
+    cardsDiv.prepend(cardCity);
   } catch (error) {
     alert('Something went wrong! 🙉');
     cityArray.pop();
