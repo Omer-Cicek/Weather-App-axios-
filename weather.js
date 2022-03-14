@@ -1,10 +1,26 @@
 const inputBar = document.querySelector('input');
 const submitButton = document.querySelector('button');
 const cardsDiv = document.querySelector('.cities');
+const everyCardItem = document.querySelectorAll('.city');
+const duplicateMessage = document.querySelector('.msg');
+
+const cityArray = [];
 
 submitButton.addEventListener('click', (e) => {
   e.preventDefault();
-  getApiWeather(inputBar.value);
+  if (!cityArray.includes(inputBar.value)) {
+    getApiWeather(inputBar.value);
+  } else {
+    duplicateMessage.innerText =
+      'You already know the weather for Ankara, Please search for another city😉';
+    setTimeout(() => {
+      duplicateMessage.innerText = '';
+    }, 3000);
+  }
+  cityArray.push(inputBar.value);
+  console.log(cityArray);
+
+  inputBar.value = '';
 });
 
 const getApiWeather = async (city) => {
@@ -20,23 +36,20 @@ const getApiWeather = async (city) => {
       sys: { country },
       weather,
     } = weatherApi.data;
-    console.log(weatherApi.data);
-    console.log(name, temp, country, weather[0].main);
 
     const cardCity = document.createElement('div');
     cardCity.classList.add('city');
     cardCity.innerHTML = `
-        <h2 class="city-name">${
-          name.includes('Province') ? name.lastIndexOf(0, 'Province') : name
-        } <sup>${country}</sup></h2>
-        <li class="city-temp">${Math.round(temp)}<sup>℃</sup></li>
-        <img src="./svg/${weather[0].icon}.svg" class="city-icon" alt="" />
-        <p>
-            <figcaption>${weather[0].description}</figcaption>
-        </p>`;
+            <h2 class="city-name">${
+              name.includes('Province') ? name.split(' ').slice(0, -1) : name
+            } <sup>${country}</sup></h2>
+            <li class="city-temp">${Math.round(temp)}<sup>℃</sup></li>
+            <img src="./svg/${weather[0].icon}.svg" class="city-icon" alt="" />
+            <p>
+                <figcaption>${weather[0].description}</figcaption>
+            </p>`;
     cardsDiv.appendChild(cardCity);
-    inputBar.value = '';
   } catch (error) {
-    console.log(error);
+    alert('Please type valid city name');
   }
 };
