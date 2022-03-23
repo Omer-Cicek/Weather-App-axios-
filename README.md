@@ -1,6 +1,8 @@
-# Weather-App-axios-
+# Weather-App-axios- Weather Condition App **
 
-# Project-008 : Weather Condition App (JS-08)
+## Welcome! 👋
+
+Thanks to visit my Github! This project is created with HTML, CSS and JavaScript (axios). Here is the link for this project (https://omer-cicek.github.io/Weather-App-axios-/)
 
 ## Description
 
@@ -8,7 +10,7 @@ Project aims to display current weather data of searched city around the world w
 
 ## Learning Outcomes
 
-At the end of the this project, students will be able to;
+At the end of the this project, I will be able to;
 
 - analyze a problem, create a weather condition app populated with a real weather api.
 
@@ -28,8 +30,10 @@ User story;
 - User can display list of searched city weather data card like on gif.
 - If new searched city is in the weather data list, app can display a warning text to user on page.
 
-🔥 You can use [OpenWeather Api](https://openweathermap.org/) for your app.
+🔥 I used [OpenWeather Api](https://openweathermap.org/) for this app.
 
-🔥 You don’t need to create a new template for this project, you can use [Weather Condition_App](https://github.com/clarusway/clarusway-full-stack-10-21/tree/main/javascript/Projects/008-Weather-App) template for html and css. We will be concerned in javascript side.
+## Got feedback for me?
 
-<center> ⌛ Happy Coding  ✍ </center>
+Feedbacks are always improve my technical knowledge, so feel free to give me a feedback through my LinkedIn account (https://www.linkedin.com/in/omercicek97/) 🙌
+
+**That Is What I Did!** 🚀
