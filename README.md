@@ -22,7 +22,7 @@ At the end of the this project, I will be able to;
 
 ![Form](weather_app.gif)
 
-User story;
+User story; 
 
 - User can search city around the world.
 - The app can fetch api with the searched city name(... and apikey if it is obligatory).
